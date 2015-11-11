@@ -1,7 +1,7 @@
 {
   "name": "uploadify",
   "version": "1.0.0",
-  "description": "",
+  "description": "express uploadify with jquery",
   "main": "index.js",
   "scripts": {
     "p" : "npm publish .",
