@@ -6,7 +6,6 @@ var multer  = require('multer');
 module.exports = function (app, cfg){
   // console.log(cfg);
   var upload = multer(cfg.multer);
-  var upload_action = require('./upload')(cfg); 
   
   if(!cfg.path){
     cfg.path = '/fileupload';

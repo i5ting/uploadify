@@ -14,8 +14,8 @@ app.use(express.static(path.join(__dirname, '/.')));
 var uploadify = require('.')
 
 uploadify(app,{
-  path:'/fileupload'
-  fileKey:'myfile'
+  path:'/fileupload',
+  fileKey:'myfile',
   multer:{ dest: 'uploads/' }
 });
 
