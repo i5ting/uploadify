@@ -20,7 +20,7 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 ### express
 
 ```
-var uploadify = require('.')
+var uploadify = require('uploadify')
 
 uploadify(app,{
   path:'/fileupload'
