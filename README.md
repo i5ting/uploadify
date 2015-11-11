@@ -20,11 +20,11 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 ### express
 
 ```
-var uploadify = require('uploadify')
+var mount_uploadify = require('uploadify')
 
-uploadify(app,{
-  path:'/fileupload'
-  fileKey:'myfile'
+mount_uploadify(app,{
+  path:'/fileupload',
+  fileKey:'myfile',
   multer:{ dest: 'uploads/' }
 });
 ```

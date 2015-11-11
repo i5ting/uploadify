@@ -11,9 +11,9 @@ app.set('view engine', 'jade');
 
 app.use(express.static(path.join(__dirname, '/.')));
 
-var uploadify = require('.')
+var mount_uploadify = require('.')
 
-uploadify(app,{
+mount_uploadify(app,{
   path:'/fileupload',
   fileKey:'myfile',
   multer:{ dest: 'uploads/' }
