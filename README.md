@@ -1,5 +1,6 @@
 # uploadify
 
+![](img/preview.png)
 
 Artwork by [i5ting](http://www.github.com/i5ting/).
 
