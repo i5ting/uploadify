@@ -14,9 +14,17 @@ app.use(express.static(path.join(__dirname, '/.')));
 var mount_uploadify = require('.')
 
 mount_uploadify(app,{
+  debug:true,
   path:'/fileupload',
   fileKey:'myfile',
-  multer:{ dest: 'uploads/' }
+  multer:{ dest: 'uploads/' },
+  callback:function(req){
+    console.log(111);
+    return {
+      a:1,
+      files:req.files
+    }
+  }
 });
 
 app.get('/', function (req, res) {

@@ -25,17 +25,26 @@ var mount_uploadify = require('uploadify')
 mount_uploadify(app,{
   path:'/fileupload',
   fileKey:'myfile',
-  multer:{ dest: 'uploads/' }
+  multer:{ dest: 'uploads/' },
+  callback:function(req){
+    console.log(111);
+    return req.files
+  }
 });
 ```
 
-### jade
+- 情景一：上传，不需要回调
+- 情景二：上传后处理，上面的配置里，必须有callback，根据req里的内容，完成对应的请求即可
+
+### resource
+
+copy css && js to some folder
 
 ```
-include node_modules/uploadify/views/header
+jquery-upload-file/
 ```
 
-### html
+### use in jade
 
 ```
 extends layout
