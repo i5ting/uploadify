@@ -49,6 +49,8 @@ mount_uploadify(app,{
   - 法1：上面的配置里，必须有callback，根据req里的内容，完成对应的请求即可
   - 法2：mount_uploadify多次，指定不同路由也是可以的
 
+如果使用中间件呢？
+
 ### resource
 
 copy css && js to some folder
