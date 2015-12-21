@@ -41,6 +41,19 @@ mount_uploadify(app,{
 - debug=true可以调试
 - qn（如果配置了qn，就只能上传一张图，并把上传结果合并到req.files里）
 
+
+```
+mount_uploadify(app,{
+  debug: false,
+  qn: simditor_qn_config.qn,
+  path: '/fileupload',
+  fileKey: 'myfile',
+  multer: simditor_qn_config.multer,
+  callback: function(req){
+      console.log(req);
+  }
+});
+```
 ### resource
 
 copy css && js to some folder
