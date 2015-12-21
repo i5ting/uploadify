@@ -31,25 +31,15 @@ mount_uploadify(app,{
     return req.files
   }
 });
-
-
-mount_uploadify(app,{
-  path:'/fileupload1',
-  fileKey:'myfile',
-  multer:{ dest: 'uploads/' },
-  callback:function(req){
-    console.log(111);
-    return req.files
-  }
-});
 ```
 
 - 情景一：上传，不需要回调
-- 情景二：上传后处理
-  - 法1：上面的配置里，必须有callback，根据req里的内容，完成对应的请求即可
-  - 法2：mount_uploadify多次，指定不同路由也是可以的
+- 情景二：上传后处理，上面的配置里，必须有callback，根据req里的内容，完成对应的请求即可
 
-如果使用中间件呢？
+新增
+
+- debug=true可以调试
+- qn（如果配置了qn，就只能上传一张图，并把上传结果合并到req.files里）
 
 ### resource
 
