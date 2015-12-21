@@ -54,6 +54,46 @@ mount_uploadify(app,{
   }
 });
 ```
+
+注意写法
+```
+$("#fileuploader").uploadFile({
+	url:"/fileupload/",
+	fileName:"myfile",
+  multiple:true,
+  dragDrop:true,
+  showDownload:true,
+  showDelete: true,
+  onSuccess: function (files, response, xhr, pd) {
+    alert(JSON.stringify(response[0].url.split('/').pop()));
+  },
+  statusBarWidth:300,
+  dragdropWidth:300,
+  deleteCallback: function (data, pd) {
+      for (var i = 0; i < data.length; i++) {
+        alert(data);
+          $.post("delete.php", {op: "delete",name: data[i]},
+              function (resp,textStatus, jqXHR) {
+                  //Show Message	
+                  alert("File Deleted");
+              });
+      }
+      pd.statusbar.hide(); //You choice.
+
+  },
+  downloadCallback:function(filename,pd)
+  	{
+  		location.href="download.php?filename="+filename;
+  	}
+});
+```
+
+比如http://img.mengxiaoban.cn/FuHkI0z4A5uHk5DtkmdoMhqEiUEt
+
+response[0].url.split('/').pop() == FuHkI0z4A5uHk5DtkmdoMhqEiUEt 
+
+和自己绑定的域名拼接到一起就可以了
+        
 ### resource
 
 copy css && js to some folder
