@@ -14,7 +14,14 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 
 ## Install
 
+express version(on master branch)
+
     [sudo]npm install --save uploadify
+
+
+koa 2 version(on koa branch)
+
+    [sudo]npm install --save koa-uploadify
 
 
 ## Code
