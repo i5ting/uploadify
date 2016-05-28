@@ -30,6 +30,7 @@ module.exports = function (app, ctx){
   
   app.use (router.routes())
      .use (router.allowedMethods());
+     
   router.post(ctx.path, upload.array(ctx.fileKey), function (ctx, next) {
     if(ctx.qn){
       var client = qn.create(ctx.qn);
