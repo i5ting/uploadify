@@ -1,43 +1,39 @@
 #!/usr/bin/env node
 
-var koa = require ('koa');
-var app = new koa();
-var static = require ('koa-static');
-var bodyParser = require ('koa-bodyparser');
-var router = require ('koa-router')();
-var path = require('path');
-var open = require("open");
-var views = require ('koa-views');
+var express  = require('express');
+var app      = express();
+var path     = require('path');
+var open     = require("open");
 
-//view engine setup
-app.use(views(__dirname + '/views', {
-  extension: 'jade'
-}));
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
-app.use (bodyParser());
-app.use ( static(__dirname + '/.'));
-
+app.use(express.static(path.join(__dirname, '/.')));
 
 var mount_uploadify = require('.')
 
-mount_uploadify (app, {
+mount_uploadify(app,{
   debug:true,
   path:'/fileupload',
   fileKey:'myfile',
-  multer:{ dest: 'uploads/' }
-  
+  multer:{ dest: 'uploads/' },
+  callback:function(req){
+    console.log(111);
+    return {
+      a:1,
+      files:req.files
+    }
+  }
 });
 
-
-app.use (router.routes())
-   .use (router.allowedMethods());
-
-router.get('/', function (ctx, next) {
-  return ctx.render('index', {    
-  });
-});
+app.get('/', function (req, res) {
+  res.render('index', {
+    
+  })
+})
 // 随机端口3000 - 10000 之间
-app.listen(5024);
+app.listen(5024)
 
 open("http://127.0.0.1:5024");
 
