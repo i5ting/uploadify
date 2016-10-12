@@ -17,11 +17,9 @@ express version(on master branch)
 
     [sudo]npm install --save uploadify
 
-
 koa 2 version(on koa branch)
 
     [sudo]npm install --save koa-uploadify
-
 
 ## Code
 
