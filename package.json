@@ -1,6 +1,6 @@
 {
   "name": "koa-uploadify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "express uploadify with jquery",
   "main": "index.js",
   "scripts": {
