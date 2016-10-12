@@ -4,9 +4,9 @@
   "description": "express uploadify with jquery",
   "main": "index.js",
   "scripts": {
-    "p": "npm publish .",
-    "start": "supervisor app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/ava -v",
+    "report-coverage": "./node_modules/.bin/nyc report --reporter=lcov > coverage.lcov && codecov",
+    "standard": "./node_modules/.bin/standard index.js"
   },
   "author": "i5ting",
   "license": "MIT",
@@ -33,13 +33,22 @@
     "open": "0.0.5",
     "serve-favicon": "~2.3.0",
     "superkoa": "^1.0.2",
-    "supervisor": "^0.9.1"
+    "supervisor": "^0.9.1",
+    "codecov": "^1.0.1",
+    "ghooks": "^1.2.4",
+    "nyc": "^7.0.0",
+    "standard": "^7.1.2"
   },
   "dependencies": {
     "koa-multer": "1.0.0",
     "koa-router": "^7.0.0",
     "multer": "^1.1.0",
     "qn": "^1.1.1"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run standard"
+    }
   },
   "readme": "# uploadify\n\n![](img/preview.png)\n\nArtwork by [i5ting](http://www.github.com/i5ting/).\n\n[![Deps](https://david-dm.org/i5ting/uploadify.svg)](https://david-dm.org/i5ting/uploadify) \n[![npm](https://img.shields.io/npm/v/uploadify.svg)](https://www.npmjs.com/package/uploadify)\n[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/i5ting/uploadify/master/LICENSE.md)\n[![npm](https://img.shields.io/npm/dt/uploadify.svg)](https://www.npmjs.com/package/uploadify)\n\n\n## Install\n\n    [sudo]npm install --save uploadify\n\n\n## Code\n\n### express\n\n```\nvar mount_uploadify = require('uploadify')\n\nmount_uploadify(app,{\n  path:'/fileupload',\n  fileKey:'myfile',\n  multer:{ dest: 'uploads/' },\n  callback:function(req){\n    console.log(111);\n    return req.files\n  }\n});\n```\n\n- 情景一：上传，不需要回调\n- 情景二：上传后处理，上面的配置里，必须有callback，根据req里的内容，完成对应的请求即可\n\n### resource\n\ncopy css && js to some folder\n\n```\njquery-upload-file/\n```\n\n### use in jade\n\n```\nextends layout\n\nblock content\n  h1= title\n  p Welcome to #{title}\n\n  #fileuploader Upload\n    \n  script.\n    $(document).ready(function() {\n    \t$(\"#fileuploader\").uploadFile({\n    \t\turl:\"/fileupload/\",\n    \t\tfileName:\"myfile\",\n        multiple:true,\n        dragDrop:true,\n        showDownload:true,\n        showDelete: true,\n        onSuccess: function (files, response, xhr, pd) {\n          alert(JSON.stringify(files));\n        },\n        statusBarWidth:600,\n        dragdropWidth:600,\n        deleteCallback: function (data, pd) {\n            for (var i = 0; i < data.length; i++) {\n              alert(data);\n                $.post(\"delete.php\", {op: \"delete\",name: data[i]},\n                    function (resp,textStatus, jqXHR) {\n                        //Show Message\t\n                        alert(\"File Deleted\");\n                    });\n            }\n            pd.statusbar.hide(); //You choice.\n\n        },\n        downloadCallback:function(filename,pd)\n        \t{\n        \t\tlocation.href=\"download.php?filename=\"+filename;\n        \t}\n    \t});\n    });\n```\n\nmore info see http://hayageek.com/docs/jquery-upload-file.php\n\n## Contributing\n\n1. Fork it\n2. Create your feature branch (`git checkout -b my-new-feature`)\n3. Commit your changes (`git commit -am 'Add some feature'`)\n4. Push to the branch (`git push origin my-new-feature`)\n5. Create new Pull Request\n\n## 版本历史\n\n- v1.0.0 初始化版本\n\n## 欢迎fork和反馈\n\n- write by `i5ting` i5ting@126.com\n\n如有建议或意见，请在issue提问或邮件\n\n## License\n\nthis repo is released under the [MIT\nLicense](http://www.opensource.org/licenses/MIT).\n",
   "readmeFilename": "README.md",
