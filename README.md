@@ -1,9 +1,9 @@
 # uploadify = express && koa 2 uploadify with jquery fileupload
 
 [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/i5ting/uploadify?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![NPM version](https://img.shields.io/npm/v/uploadify.svg?style=flat-square)](https://www.npmjs.com/package/uploadify)
-[![Build](https://travis-ci.org/i5ting/uploadify.svg?branch=master)](https://travis-ci.org/i5ting/uploadify)
-[![codecov.io](https://codecov.io/github/i5ting/uploadify/coverage.svg?branch=master)](https://codecov.io/github/i5ting/uploadify?branch=master)
+[![NPM version](https://img.shields.io/npm/v/uploadify.svg?style=flat-square)](https://www.npmjs.com/package/koa-uploadify)
+[![Build](https://travis-ci.org/i5ting/uploadify.svg?branch=master)](https://travis-ci.org/i5ting/koa-uploadify)
+[![codecov.io](https://codecov.io/github/i5ting/uploadify/coverage.svg?branch=master)](https://codecov.io/github/i5ting/koa-uploadify?branch=master)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ![](img/preview.png)
