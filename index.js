@@ -46,12 +46,7 @@ module.exports = function (app, cfg){
           if (err) {
             return reject(err)
           }
-          // {
-          //   hash: 'FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
-          //   key: 'FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
-          //   url: 'http://qtestbucket.qiniudn.com/FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
-          //   "x:filename": "foo.txt",
-          // }
+
           var f = ctx.req.files[0];
         
           for (var k in result) {

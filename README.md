@@ -26,7 +26,7 @@ koa 2 version(on koa branch)
 
 ## Code
 
-### express
+### server
 
 ```
 var mount_uploadify = require('uploadify')
@@ -65,6 +65,7 @@ mount_uploadify(app,{
 ```
 
 注意写法
+
 ```
 $("#fileuploader").uploadFile({
 	url:"/fileupload/",
