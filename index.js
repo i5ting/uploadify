@@ -1,67 +1,75 @@
-var koa = require('koa');
 var router = require ('koa-router')();
 var multer  = require('koa-multer');
 var fs = require('fs');
 var qn = require('qn');
 
-module.exports = function (app, ctx){
-  var debug = ctx.debug;
-  var upload = multer(ctx.multer);
+module.exports = function (app, cfg){
+  var debug = cfg.debug;
+  var upload = multer(cfg.multer);
   
-  if(!ctx.path){
-    ctx.path = '/fileupload';
+  if(!cfg.path){
+    cfg.path = '/fileupload';
   }
   
-  if(!ctx.fileKey){
-    ctx.fileKey = 'myfile';
+  if(!cfg.fileKey){
+    cfg.fileKey = 'myfile';
   }
   
-  if(!ctx.callback){
-    ctx.callback = function(ctx){
+  if(!cfg.callback){
+    cfg.callback = function(ctx){
       return ctx.request.files;
     }
   }
   
   function log(str){
-    if (debug == true) {
+    if (debug === true) {
       console.log(str)
     }
   }
-  
+    
   app.use (router.routes())
      .use (router.allowedMethods());
      
-  router.post(ctx.path, upload.array(ctx.fileKey), function (ctx, next) {
-    if(ctx.qn){
-      var client = qn.create(ctx.qn);
-      var filepath = ctx.request.files[0]['path'];      
+  router.post(cfg.path, upload.array(cfg.fileKey), function (ctx, next) {
+      console.log(ctx.request)
+    if(cfg.qn){
+      var client = qn.create(cfg.qn);
+      var filepath = ctx.req.files[0]['path'];      
       var p = __dirname.split('node_modules')[0];
       var fp = fs.createReadStream(p + '/' + filepath);
       
-      client.upload(fp, function (err, result) {
-        log(err);
-        log(result);
-        // {
-        //   hash: 'FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
-        //   key: 'FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
-        //   url: 'http://qtestbucket.qiniudn.com/FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
-        //   "x:filename": "foo.txt",
-        // }
-        var f = ctx.request.files[0];
+      console.log('init')
+      return new Promise((resolve, reject) => {
+        client.upload(fp, function (err, result) {
+          log(err);
+          log(result);
+          if (err) {
+            return reject(err)
+          }
+          // {
+          //   hash: 'FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
+          //   key: 'FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
+          //   url: 'http://qtestbucket.qiniudn.com/FvnDEnGu6pjzxxxc5d6IlNMrbDnH',
+          //   "x:filename": "foo.txt",
+          // }
+          var f = ctx.req.files[0];
         
-        for (var k in result) {
-          var v = result[k];
-          f[k] = v;
-        }
+          for (var k in result) {
+            var v = result[k];
+            f[k] = v;
+          }
         
-        var arr = [];
-        arr.push(f)
+          var arr = [];
+          arr.push(f)
         
-        log(f)
-        ctx.status(200).json(arr);
+          log(f)
+
+          ctx.body = arr;
+          resolve()
+        });
       });
     }else{
-      var json = ctx.request;
+      var json = ctx.req;
       return ctx.body = json;
     }
   })  
