@@ -9,8 +9,7 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/i5ting/uploadify/master/LICENSE.md)
 [![npm](https://img.shields.io/npm/dt/uploadify.svg)](https://www.npmjs.com/package/uploadify)
 
-- [
-科普：express文件上传、上传到七牛](upload.md)
+- [科普：express文件上传、上传到七牛](upload.md)
 
 ## Install
 
