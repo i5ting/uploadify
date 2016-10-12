@@ -1,4 +1,4 @@
-qn.js
+*.sh
 node_modules/
 *.log
 uploads
