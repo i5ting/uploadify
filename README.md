@@ -103,6 +103,8 @@ $("#fileuploader").uploadFile({
 response[0].url.split('/').pop() == FuHkI0z4A5uHk5DtkmdoMhqEiUEt 
 
 和自己绑定的域名拼接到一起就可以了
+
+如果想定制预览之类的效果，可以在`onSuccess`里处理
         
 ### resource
 
