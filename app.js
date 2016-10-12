@@ -24,7 +24,7 @@ mount_uploadify (app, {
   path: '/fileupload',
   fileKey: 'myfile',
   multer: { dest: 'uploads/' },
-	qn: reqire('./qn')
+	qn: require('./qn')
 });
 
 
