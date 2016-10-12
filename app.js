@@ -20,13 +20,12 @@ app.use ( static(__dirname + '/.'));
 var mount_uploadify = require('.')
 
 mount_uploadify (app, {
-  debug: true,
+  debug: false,
   path: '/fileupload',
   fileKey: 'myfile',
   multer: { dest: 'uploads/' },
 	qn: require('./qn')
 });
-
 
 app.use (router.routes())
    .use (router.allowedMethods());
@@ -37,7 +36,9 @@ router.get('/', function (ctx, next) {
   });
 });
 // 随机端口3000 - 10000 之间
-app.listen(5024);
+// app.listen(5024);
 
 // open("http://127.0.0.1:5024");
+// console.log(router.stack)
 
+module.exports = app

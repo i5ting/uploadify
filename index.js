@@ -22,7 +22,7 @@ module.exports = function (app, cfg){
   }
   
   function log(str){
-    if (debug === true) {
+    if (debug == true) {
       console.log(str)
     }
   }
@@ -31,14 +31,12 @@ module.exports = function (app, cfg){
      .use (router.allowedMethods());
      
   router.post(cfg.path, upload.array(cfg.fileKey), function (ctx, next) {
-      console.log(ctx.request)
+    log(ctx.request)
     if(cfg.qn){
       var client = qn.create(cfg.qn);
       var filepath = ctx.req.files[0]['path'];      
       var p = __dirname.split('node_modules')[0];
       var fp = fs.createReadStream(p + '/' + filepath);
-      
-      console.log('init')
       return new Promise((resolve, reject) => {
         client.upload(fp, function (err, result) {
           log(err);
