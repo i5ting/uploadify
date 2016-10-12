@@ -4,10 +4,11 @@
 
 Artwork by [i5ting](http://www.github.com/i5ting/).
 
-[![Deps](https://david-dm.org/i5ting/uploadify.svg)](https://david-dm.org/i5ting/uploadify) 
-[![npm](https://img.shields.io/npm/v/uploadify.svg)](https://www.npmjs.com/package/uploadify)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/i5ting/uploadify/master/LICENSE.md)
-[![npm](https://img.shields.io/npm/dt/uploadify.svg)](https://www.npmjs.com/package/uploadify)
+[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/i5ting/uploadify?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![NPM version](https://img.shields.io/npm/v/uploadify.svg?style=flat-square)](https://www.npmjs.com/package/uploadify)
+[![Build](https://travis-ci.org/i5ting/uploadify.svg?branch=master)](https://travis-ci.org/i5ting/uploadify)
+[![codecov.io](https://codecov.io/github/i5ting/uploadify/coverage.svg?branch=master)](https://codecov.io/github/i5ting/uploadify?branch=master)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 - [科普：express文件上传、上传到七牛](upload.md)
 
